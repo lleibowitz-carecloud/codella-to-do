@@ -5,12 +5,13 @@ import ListForm from './ListForm';
 import { BrowserRouter as Router, Route, browserHistory, Switch, Link } from 'react-router-dom'
 import './index.css'; 
 
+// can talk about a URL make up? i.e Changing the Path
 const Header = () => (
   <header>
     <nav>
       <ul>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/lists'>All Lists</Link></li>
+        <li><Link to='/lists'>Page 2</Link></li>
       </ul>
     </nav>
   </header>
@@ -32,7 +33,7 @@ const Home = () => (
 
 const Lists = () => (
   <div>
-  <h1> This is our Page to show all of our lists created </h1>
+  <h1> This is our second page </h1>
   </div>
 )
 
