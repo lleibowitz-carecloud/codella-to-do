@@ -7,7 +7,6 @@ React To-do App:
 3. Show All Items => render method, interation/loops
 4. Styling the page => Html and CSS
 5. Routing => Make up of a URL (Path)
-6. 
 
 QA
 1. Form reset

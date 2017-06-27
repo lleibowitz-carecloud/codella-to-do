@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Main from './App';
-import ListForm from './ListForm';
+import ListForm from './App.js';
 import { BrowserRouter as Router, Route, browserHistory, Switch, Link } from 'react-router-dom'
 import './index.css'; 
 
@@ -9,6 +8,7 @@ import './index.css';
 const Header = () => (
   <header>
     <nav>
+    <span>CodedellaBook</span>
       <ul>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/lists'>Page 2</Link></li>
@@ -26,7 +26,6 @@ const App = () => (
 
 const Home = () => (
   <div>
-  <h1> This is our Home Page </h1>
   <ListForm />
   </div>
 )
@@ -37,12 +36,12 @@ const Lists = () => (
   </div>
 )
 
-const List = () => (
-  <Switch>
-    <Route exact path='/lists' component={Lists} />
-    <Route path='lists/:name' component={List} />
-  </Switch>
-)
+// const List = () => (
+//   <Switch>
+//     <Route exact path='/lists' component={Lists} />
+//     <Route path='lists/:name' component={List} />
+//   </Switch>
+// )
 
 const Main = () => (
   <main>

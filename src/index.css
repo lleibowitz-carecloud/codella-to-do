@@ -3,3 +3,28 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+header {
+  background-color: navy;
+  padding: 25px 25px;
+}
+
+header li a {
+  color: white;
+}
+
+header span {
+  color: silver;
+  padding: 10px 10px;
+  border: 2px solid silver;
+  background-color: black;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.wall {
+  padding: 10px 100px 10px 100px;
+}
+.wall h1{
+  margin: 50px;
+}
