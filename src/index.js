@@ -8,7 +8,7 @@ import './index.css';
 const Header = () => (
   <header>
     <nav>
-    <span>CodedellaBook</span>
+    <span>CODeLLAbook</span>
       <ul>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/wall'>Wall</Link></li>
