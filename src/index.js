@@ -11,7 +11,7 @@ const Header = () => (
     <span>CodedellaBook</span>
       <ul>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/lists'>Page 2</Link></li>
+        <li><Link to='/wall'>Wall</Link></li>
       </ul>
     </nav>
   </header>
@@ -24,30 +24,23 @@ const App = () => (
   </div>
 )
 
-const Home = () => (
+const Wall = () => (
   <div>
   <ListForm />
   </div>
 )
 
-const Lists = () => (
+const Home = () => (
   <div>
-  <h1> This is our second page </h1>
+  <h1> This is our home page. Add pictures and gifs to talk about react. </h1>
   </div>
 )
-
-// const List = () => (
-//   <Switch>
-//     <Route exact path='/lists' component={Lists} />
-//     <Route path='lists/:name' component={List} />
-//   </Switch>
-// )
 
 const Main = () => (
   <main>
     <Switch>
     <Route exact path='/' component={Home} />
-    <Route path='/lists' component={Lists} />
+    <Route path='/wall' component={Wall} />
     </Switch>
   </main>
 )

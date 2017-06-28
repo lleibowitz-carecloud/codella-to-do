@@ -41,11 +41,9 @@ addLike(event) {
       let date = (new Date()).toDateString()
       item.index= index
       let like = item.like
-      // console.log(like)
-      return <li className="item" id={index} key={index} ><span id="date">{date}</span>:{' '}{item.name}{' '}
+      return <li className="item" id={index} key={index} ><span id="date">{date}</span>:{' '}{item.name}{' '}<span id="like">{like}</span>
       <button className="deleteButton" type="button" id={item.index} onClick={this.handleDelete}>Delete</button>
       <button className="likeButton" type="button" id={item.index} onClick={this.addLike}>Like</button>
-      <p>{like}</p>
       </li>
 }
 
@@ -94,17 +92,19 @@ class ListForm extends Component {
     <div className="Form">
       <h1> Wall </h1>
         <form id="addItem" onSubmit={this.handleSubmit}>
-          <label> Add Item:
+          <label> Add New Post
           <input
             id="name"
             name='name'
             type='textarea'
             defaultValue={this.state.name} />
             </label>
+            <div>
           <input
             id="submit"
             type='submit'
             defaultValue="Submit" />
+            </div>
         </form>
         <ShowList item={this.state.name} list={this.state.list} />
       </div>

@@ -41,9 +41,12 @@ height: 50px;
   background-color: silver;
   margin: 10px;
   border-radius: 5px;
-  /*opacity: .7;*/
+  height: 75px;
 }
 
+#submit {
+  margin-left:550px;
+}
 
 
 .item .deleteButton {
@@ -54,6 +57,7 @@ height: 50px;
   padding:10px 25px;
   font-size: 20px;
   margin: 5px;
+  margin-top: 35px;
 }
 
 .item .likeButton {
@@ -64,9 +68,20 @@ height: 50px;
   padding:10px 25px;
   font-size: 20px;
   margin: 5px;
+  margin-top: 35px;
+}
+
+button .item {
+  padding-top: 10px;
 }
 
 #date {
   color: green;
+}
+
+#like {
+  float: right;
+  font-size: 26px;
+  color: navy;
 }
 
