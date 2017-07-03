@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ListForm from './App.js';
+import AddPost from './App.js';
 import { BrowserRouter as Router, Route, browserHistory, Switch, Link } from 'react-router-dom'
 import './index.css'; 
 
@@ -26,7 +26,7 @@ const App = () => (
 
 const Wall = () => (
   <div>
-  <ListForm />
+  <AddPost />
   </div>
 )
 

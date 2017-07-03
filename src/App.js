@@ -5,11 +5,11 @@ import './App.css';
 // Teach about Creating a Form and the associated props for an input tag
 
 
-class ShowList extends Component {
+class ShowPosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todoList: this.props.list,
+      postList: this.props.list,
       likes: 0
     }
   this.handleDelete = this.handleDelete.bind(this)
@@ -18,47 +18,47 @@ class ShowList extends Component {
   
   handleDelete(event) {
   event.preventDefault()
-  let array= this.state.todoList
+  let array= this.state.postList
   let id = event.target.id
   array.splice(id,1)
-  this.setState({todoList: array });
+  this.setState({postList: array });
 }
 
 addLike(event) {
   event.preventDefault()
-  let array= this.state.todoList
+  let array= this.state.postList
   let id= event.target.id
-  let item= array[id]
-  item.like++
-  let like= this.state.todoList
-  this.setState({toList: like})
+  let post= array[id]
+  post.like++
+  let newArray= this.state.postList
+  this.setState({postList: newArray})
   
 }
   
   render() { 
     
-    const createTasks = (item,index) =>  {
+    const allPosts = (post,index) =>  {
       let date = (new Date()).toDateString()
-      item.index= index
-      let like = item.like
-      return <li className="item" id={index} key={index} ><span id="date">{date}</span>:{' '}{item.name}{' '}<span id="like">{like}</span>
-      <button className="deleteButton" type="button" id={item.index} onClick={this.handleDelete}>Delete</button>
-      <button className="likeButton" type="button" id={item.index} onClick={this.addLike}>Like</button>
+      post.index= index
+      let like = post.like
+      return <li className="post" id={index} key={index} ><span id="date">{date}</span>:{' '}{post.message}{' '}<span id="like">{like}</span>
+      <button className="deleteButton" type="button" id={post.index} onClick={this.handleDelete}>Delete</button>
+      <button className="likeButton" type="button" id={post.index} onClick={this.addLike}>Like</button>
       </li>
 }
 
-  let listItems = this.state.todoList.map(createTasks);
+  let posts = this.state.postList.map(allPosts);
   //Bug if no items are empty there is no indicator - add Condition
-// if (listItems.length === 0) {
-//   listItems = "Add A Item. You have am empty list."
-// } else {
-//   listItems = todoEntries.map(createTasks);
-// }
+if (posts.length === 0) {
+  posts = "Add A Item. You have am empty list."
+} else {
+  posts = this.state.postList.map(allPosts);
+}
 
   return(
     <div className="Wall">
     <ol className="theList">
-     {listItems}
+     {posts}
    </ol>
    </div>
   )
@@ -67,11 +67,11 @@ addLike(event) {
 
 // export default ShowList;
 
-class ListForm extends Component {
+class AddPost extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        name: "",
+        message: "",
         list: []
       }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -79,10 +79,10 @@ class ListForm extends Component {
     
     handleSubmit(event) {
       event.preventDefault() 
-      let item = event.target.name.value 
-      this.setState({name: item})
-      let index = Date.now()
-      this.state.list.push({name: item, key: index, like: 0})
+      let message = event.target.message.value // gets message
+      this.setState({message: message})
+      let index = Date.now() 
+      this.state.list.push({message: message, key: index, like: 0}) // push the newly created post into the list of posts
     //bug:  form list does not reset when submitted event.target.reset()   - event.target.name.value.reset()
     }
     
@@ -91,13 +91,13 @@ class ListForm extends Component {
     return (
     <div className="Form">
       <h1> Wall </h1>
-        <form id="addItem" onSubmit={this.handleSubmit}>
+        <form id="addPost" onSubmit={this.handleSubmit}>
           <label> Add New Post
           <input
-            id="name"
-            name='name'
+            id="message"
+            name='message'
             type='textarea'
-            defaultValue={this.state.name} />
+            defaultValue={this.state.message} />
             </label>
             <div>
           <input
@@ -106,38 +106,13 @@ class ListForm extends Component {
             defaultValue="Submit" />
             </div>
         </form>
-        <ShowList item={this.state.name} list={this.state.list} />
+        <ShowPosts message={this.state.message} list={this.state.list} />
       </div>
     );
   }
 }
 
-export default ListForm;
-
-// class Main extends Component {
-//   constructor (props) {
-//   super(props);
-//   this.state = {
-//     todoItems: todoItems
-//   }
-// }
-// 
-// }
-// 
-//   render() {
-//     return (
-//       <div className="App">
-//         <div className="App-header">
-//           <h2>My List App</h2>
-//         </div>
-//         <ListForm/>
-              // <ShowList />
-//       </div>
-//     );
-//   }
-// }
-
-// export default Main;
+export default AddPost;
 
 
 
