@@ -50,7 +50,7 @@ addLike(event) {
   let posts = this.state.postList.map(allPosts);
   //Bug if no items are empty there is no indicator - add Condition
 if (posts.length === 0) {
-  posts = "Add A Item. You have am empty list."
+  posts = "Add A Post. You have am empty wall."
 } else {
   posts = this.state.postList.map(allPosts);
 }
