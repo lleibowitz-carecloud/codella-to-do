@@ -9,8 +9,7 @@ class ShowPosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      postList: this.props.list,
-      likes: 0
+      postList: this.props.posts
     }
   this.handleDelete = this.handleDelete.bind(this)
   this.addLike = this.addLike.bind(this)
@@ -19,20 +18,36 @@ class ShowPosts extends Component {
   handleDelete(event) {
   event.preventDefault()
   let array= this.state.postList
-  let id = event.target.id
-  array.splice(id,1)
-  this.setState({postList: array });
+  let id = event.target.id  // get the id of the post
+  array.splice(id,1) // uses the method 'splice' to remove the item at index, and remove 1 item
+  this.setState({postList: array});
 }
+
+// <button className="likeButton" type="button" id={post.index} onClick={this.addLike}>Like</button> 
+// addLike(event) {
+//   event.preventDefault()
+//   let array= this.state.postList // get the current list of posts
+//   let id= event.target.id // get the id of the post
+//   let post= array[id] //get the post at the index
+//   console.log(post)
+//   post.like++ //increment the like for the post
+//   let newArray= this.state.postList // get the new Array with the increment
+//   this.setState({postList: newArray}) // save the new array to the state so DOM re-renders
+// }
 
 addLike(event) {
   event.preventDefault()
-  let array= this.state.postList
+  let array= this.state.postList 
   let id= event.target.id
   let post= array[id]
-  post.like++
+  if (post.like === 0) {
+    console.log(post.like)
+    post.like++
+  } else {
+    post.like--
+  }
   let newArray= this.state.postList
   this.setState({postList: newArray})
-  
 }
   
   render() { 
@@ -41,19 +56,27 @@ addLike(event) {
       let date = (new Date()).toDateString()
       post.index= index
       let like = post.like
-      return <li className="post" id={index} key={index} ><span id="date">{date}</span>:{' '}{post.message}{' '}<span id="like">{like}</span>
+      let likeImage
+      let buttonName
+      if (like === 0) {
+        buttonName= "Like"
+      } else {
+        likeImage= "❤️"
+        buttonName= "Unlike"
+      }
+      return <div className="post" id={index} key={index} ><div id="date">📌{' '}{date} <span id="like">{likeImage}</span></div>{' '}{post.message}>
       <button className="deleteButton" type="button" id={post.index} onClick={this.handleDelete}>Delete</button>
-      <button className="likeButton" type="button" id={post.index} onClick={this.addLike}>Like</button>
-      </li>
+      <button className="likeButton" type="button" id={post.index} onClick={this.addLike}>{buttonName}</button>
+      </div>
 }
 
   let posts = this.state.postList.map(allPosts);
   //Bug if no items are empty there is no indicator - add Condition
-if (posts.length === 0) {
-  posts = "Add A Post. You have am empty wall."
-} else {
-  posts = this.state.postList.map(allPosts);
-}
+// if (posts.length === 0) {
+//   posts = "Add A Post. You have am empty wall."
+// } else {
+//   posts = this.state.postList.map(allPosts);
+// }
 
   return(
     <div className="Wall">
@@ -72,7 +95,7 @@ class AddPost extends Component {
       super(props);
       this.state = {
         message: "",
-        list: []
+        posts: []
       }
     this.handleSubmit = this.handleSubmit.bind(this)
       }
@@ -82,8 +105,9 @@ class AddPost extends Component {
       let message = event.target.message.value // gets message
       this.setState({message: message})
       let index = Date.now() 
-      this.state.list.push({message: message, key: index, like: 0}) // push the newly created post into the list of posts
-    //bug:  form list does not reset when submitted event.target.reset()   - event.target.name.value.reset()
+      this.state.posts.push({message: message, key: index, like: 0}) // push the newly created post into the list of posts
+    //bug:  form list does not reset when submitted  
+      // event.target.message.value = ""
     }
     
   render() { 
@@ -92,7 +116,7 @@ class AddPost extends Component {
     <div className="Form">
       <h1> Wall </h1>
         <form id="addPost" onSubmit={this.handleSubmit}>
-          <label> Add New Post
+          <label> Add a message 💬{' '}
           <input
             id="message"
             name='message'
@@ -106,14 +130,10 @@ class AddPost extends Component {
             defaultValue="Submit" />
             </div>
         </form>
-        <ShowPosts message={this.state.message} list={this.state.list} />
+        <ShowPosts posts={this.state.posts} />
       </div>
     );
   }
 }
 
 export default AddPost;
-
-
-
-

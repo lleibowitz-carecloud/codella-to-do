@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import AddPost from './App.js';
 import { BrowserRouter as Router, Route, browserHistory, Switch, Link } from 'react-router-dom'
 import './index.css'; 
-
+import logo  from '../public/favicon.ico'
+ 
 // can talk about a URL make up? i.e Changing the Path
 const Header = () => (
   <header>
     <nav>
     <span>CODeLLAbook</span>
       <ul>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/wall'>Wall</Link></li>
+        <li><Link to='/'>Wall</Link></li>
+        <li><Link to='/about'>About</Link></li>
       </ul>
     </nav>
   </header>
@@ -24,23 +25,28 @@ const App = () => (
   </div>
 )
 
+// this is our component that holds the AddPost and ShowPosts components
 const Wall = () => (
   <div>
   <AddPost />
   </div>
 )
 
-const Home = () => (
+const About = () => (
   <div>
-  <h1> This is our home page. Add pictures and gifs to talk about react. </h1>
+  <ul><img src={logo} alt="React.js logo" /><h1>React.js</h1>
+  <li><h2>Built by Facebook</h2></li>
+  <li><h2>It is a library, not a framework.</h2></li>
+  <li><h2>Creates a "single page app"</h2></li>
+  </ul>
   </div>
 )
 
 const Main = () => (
   <main>
     <Switch>
-    <Route exact path='/' component={Home} />
-    <Route path='/wall' component={Wall} />
+    <Route exact path='/' component={Wall} />
+    <Route path='/about' component={About} />
     </Switch>
   </main>
 )
