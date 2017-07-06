@@ -120,7 +120,7 @@ class AddPost extends Component {
           <input
             id="submit"
             type='submit'
-            defaultValue="enter" />
+            defaultValue="submit" />
             </div>
         </form>
         <ShowPosts posts={this.state.posts} />
