@@ -62,21 +62,15 @@ addLike(event) {
         buttonName= "Like"
       } else {
         likeImage= "❤️"
-        buttonName= "Unlike"
+        buttonName= "like"
       }
-      return <div className="post" id={index} key={index} ><div id="date">📌{' '}{date} <span id="like">{likeImage}</span></div>{' '}{post.message}>
+      return <div className="post" id={index} key={index} ><div id="date">📌{' '}{date} <span id="like">{likeImage}</span></div>{' '}{post.message}
       <button className="deleteButton" type="button" id={post.index} onClick={this.handleDelete}>Delete</button>
       <button className="likeButton" type="button" id={post.index} onClick={this.addLike}>{buttonName}</button>
       </div>
 }
 
   let posts = this.state.postList.map(allPosts);
-  //Bug if no items are empty there is no indicator - add Condition
-// if (posts.length === 0) {
-//   posts = "Add A Post. You have am empty wall."
-// } else {
-//   posts = this.state.postList.map(allPosts);
-// }
 
   return(
     <div className="Wall">
@@ -106,8 +100,6 @@ class AddPost extends Component {
       this.setState({message: message})
       let index = Date.now() 
       this.state.posts.push({message: message, key: index, like: 0}) // push the newly created post into the list of posts
-    //bug:  form list does not reset when submitted  
-      // event.target.message.value = ""
     }
     
   render() { 
