@@ -35,9 +35,9 @@ const Wall = () => (
 const About = () => (
   <div>
   <ul><img src={logo} alt="React.js logo" /><h1>React.js</h1>
-  <li><h2>Built by Facebook</h2></li>
+  <li><h2>Built by Facebook, initial release in 2013</h2></li>
   <li><h2>It is a library, not a framework.</h2></li>
-  <li><h2>Creates a "single page app"</h2></li>
+  <li><h2>Creates a "single page app"- different components are rendered.</h2></li>
   </ul>
   </div>
 )

@@ -62,7 +62,7 @@ addLike(event) {
         buttonName= "Like"
       } else {
         likeImage= "❤️"
-        buttonName= "like"
+        buttonName= "Unlike"
       }
       return <div className="post" id={index} key={index} ><div id="date">📌{' '}{date} <span id="like">{likeImage}</span></div>{' '}{post.message}
       <button className="deleteButton" type="button" id={post.index} onClick={this.handleDelete}>Delete</button>
@@ -100,6 +100,7 @@ class AddPost extends Component {
       this.setState({message: message})
       let index = Date.now() 
       this.state.posts.push({message: message, key: index, like: 0}) // push the newly created post into the list of posts
+      event.target.message.value = ""
     }
     
   render() { 
@@ -119,7 +120,7 @@ class AddPost extends Component {
           <input
             id="submit"
             type='submit'
-            defaultValue="Submit" />
+            defaultValue="enter" />
             </div>
         </form>
         <ShowPosts posts={this.state.posts} />
